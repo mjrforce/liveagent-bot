@@ -17,6 +17,12 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 # Set up Amazon Alexa
 
+1. Log in to the [Amazon Developer Console](https://developer.amazon.com/edw/home.html#/) and click on Alexa Skills Kit. Then click on Add a new skill.
+
+2. Give your skill a name and invocation phrase.
+
+[![Amazon Step 1](bots/amazon/step1)]
+
 # Set up Heroku
 
 1. Deploy this webhook to heroku
