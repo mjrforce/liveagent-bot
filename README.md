@@ -21,7 +21,7 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 2. Give your skill a name and invocation phrase.
 
-[![Amazon Step 1](bots/amazon/step1)]
+![Amazon Step 1](bots/amazon/step1)
 
 # Set up Heroku
 
