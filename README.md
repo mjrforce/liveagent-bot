@@ -1,4 +1,4 @@
-# Alexa and Dialogflow (API.AI / Google Home) bot that is integrated with Salesforce and Salesforce Live Agent.
+# Alexa and Dialogflow (API.AI / Google Home) bot, integrated with Salesforce and Salesforce Live Agent.
 
 This is one webhook to rule them all. This project uses the following platforms:
 1. [Heroku](https://www.heroku.com/)
@@ -9,17 +9,17 @@ This is one webhook to rule them all. This project uses the following platforms:
 6. [Salesforce](https://www.salesforce.com/)
 
 
-# Up and running in 3 steps
+# Lets get going
 
 1. Deploy this webhook to heroku
 
     [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-2. Import [this intent](Welcome-User.json) to your agent.
+2. Log into Dialogflow and create a new agent.
 
-3. Activate the Webhook in API.AI with the url provided by heroku and add the header `Auth-Token`: `an-example-token`
+3. Click on the gear icon, the Export and Import tab, and the RESTORE FROM ZIP button. Upload [this zip file](liveagent-bot.zip).
 
-You're set! Tell your agent `My name is James` and you should receive a reply `Hello James! Welcome from the webhook.`.
+
 
 
 # The Code
