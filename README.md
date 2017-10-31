@@ -1,6 +1,12 @@
-# A Simple Authenticated Webhook for API.AI with Node.js.
+# Alexa and Dialogflow (API.AI / Google Home) bot that is integrated with Salesforce and Salesforce Live Agent.
 
-This is a pretty simple node.js app that serves as a fulfilment service for [API.AI](https://api.ai) agents. This example expects an intent that provides a `given-name` parameter. You can download [this intent](Welcome-User.json) and import it if you don'thave one.
+This is one webhook to rule them all. This project uses the following platforms:
+1. [Heroku](https://www.heroku.com/)
+2. [Dialogflow (formerly API.AI)](https://dialogflow.com/)
+3. [Amazon Alexa](https://developer.amazon.com/)
+4. [Facebook](https://developer.facebook.com/)
+5. [Twilio](https://www.twilio.com/)
+6. [Salesforce](https://www.salesforce.com/)
 
 
 # Up and running in 3 steps
