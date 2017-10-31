@@ -9,17 +9,19 @@ This is one webhook to rule them all. This project uses the following platforms:
 6. [Salesforce](https://www.salesforce.com/)
 
 
-# Lets get going
+# Set up Dialogflow (API.AI)
+
+1. Log into Dialogflow and create a new agent.
+
+2. Click on the gear icon, the Export and Import tab, and the RESTORE FROM ZIP button. Upload [this zip file](bots/dialogflow/liveagent-bot.zip).
+
+# Set up Amazon Alexa
+
+# Set up Heroku
 
 1. Deploy this webhook to heroku
 
     [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-2. Log into Dialogflow and create a new agent.
-
-3. Click on the gear icon, the Export and Import tab, and the RESTORE FROM ZIP button. Upload [this zip file](liveagent-bot.zip).
-
-
 
 
 # The Code
