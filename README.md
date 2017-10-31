@@ -23,6 +23,10 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 ![Amazon Step 1](bots/alexa/steps/Step1.JPG)
 
+3. Fill out the [Schema](bots/alexa/intentSchema.json) and [Utterances](bots/alexa/utterances.txt)
+![Amazon Step 1](bots/alexa/steps/Step2.JPG)
+![Amazon Step 1](bots/alexa/steps/Step2b.JPG)
+
 # Set up Heroku
 
 1. Deploy this webhook to heroku
