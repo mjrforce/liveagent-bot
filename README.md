@@ -24,7 +24,7 @@ This is one webhook to rule them all. This project uses the following platforms:
 ![Amazon Step 1](bots/alexa/steps/Step1.JPG)
 
 3. Fill out the [Schema](bots/alexa/intentSchema.json) and [Utterances](bots/alexa/utterances.txt)
-![Amazon Step 2](bots/alexa/steps/step2.JPG)
+![Amazon Step 2](bots/alexa/steps/step2a.JPG)
 ![Amazon Step 2b](bots/alexa/steps/step2b.JPG)
 ![Amazon Step 2c](bots/alexa/steps/step2c.JPG)
 
