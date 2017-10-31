@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "slots": [
+        {
+          "name": "name",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ],
+      "intent": "saymyname"
+    }
+  ]
+}
