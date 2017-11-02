@@ -45,88 +45,69 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 2. Fill in the environment variables.
 
+# Set up Twilio
+
+# Set up Facebook
+
 # The Code
 
 Let's check out the code.
 
 ```javascript
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-app.use(bodyParser.json())
-app.set('port', (process.env.PORT || 5000))
+const dotenv = require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request-promise');
 ```
 
-You're probably too familiar with these lines. So what we have is a node app, created with express, listening to port 5000 (unless PORT is defined). 
+So what we have is a node app, created with express, listening to port 5000 (unless PORT is defined). 
 
 ```javascript
-app.post('/webhook', function (req, res) {
-  ...
-}
+const twilio = require('./routers/twilio');
+const facebook = require('./routers/facebook');
+const dialogflow = require('./routers/dialogflow');
+const alexa = require('./routers/alexa');
 ```
 
-Now, this is the part that captures the data from API.AI. It's not required to use `/webhook` as the route but we'll just use it for clarities sake. You can use `/` if you wanted to. The JSON payload will be stored in `req.body`.
+Here we are defining our routes for each of the integration points: Twilio, Facebook, Dialogflow (API.AI), and Alexa.
+
+# Alexa Skill
 
 ```javascript
-const REQUIRE_AUTH = true
-const AUTH_TOKEN = 'an-example-token'
-
-...
-
-  if (REQUIRE_AUTH) {
-    if (req.headers['auth-token'] !== AUTH_TOKEN) {
-      return res.status(401).send('Unauthorized')
-    }
-  }
-
+alexa.launch( function( request, response ) {
+  //What to say when Alexa app is first opened.
+  response.say('Welcome to My App.' );
+}) ;
 ```
 
-Here lies a very primitive check where the `auth-token` header is verified against a single token. Customize this to your needs.
-
+Customize the launch callback to customize what Alexa says / does when you say "Open My App".
 
 ```javascript
-  if (!req.body || !req.body.result || !req.body.result.parameters) {
-    return res.status(400).send('Bad Request')
-  }
+alexa.intent('welcomeUser',
+  (req,res, slots) => {
+    res.say("Welcome "+ slots.name).end();
+    var name = slots.name;
+    //log Bot Chat to Salesforce
+    salesforce.logToSalesforce('Bot',
+                               'Alexa',
+                               {id: req.data.session.sessionId  , name: name},
+                               req.data.session.sessionId,
+                               'My name is ' + name,
+                               'Hello ' + name
+                              );
+  });
 ```
 
-Just to be sure that we receive the information we need, we did some validation here. Again, expand it base on what you needed.
+Here is the real magic. This is where we can access slots that we've defined in our Alexa skill, perform some logic, and ultimately return a response through `res.say`. We are also using our Salesforce helper to log some information to Salesforce.
 
-
-```javascript
-  var userName = req.body.result.parameters['given-name']
-  var webhookReply = 'Hello ' + userName + '! Welcome from the webhook.'
-
-  // the most basic response
-  res.status(200).json({
-    source: 'webhook',
-    speech: webhookReply,
-    displayText: webhookReply
-  })
-```
-
-Here's the main event. We took the value of the parameter `given-name` and used it for the return response. The response needs to be of `Content-Type: application/json`, so `res.json` takes care of that for us.
-
-In an example response in the [webhook documentation](https://docs.api.ai/docs/webhook), we should have a format like:
-
-```javascript
-{
-    source: 'source-of-the-response',
-    speech: 'Response to the request.',
-    displayText: 'Text displayed on the user device screen.'
-}
-```
-
-This is the simplest response. You can check out [Rich Messages](https://docs.api.ai/docs/rich-messages) and [Response design for Actions on Google](https://docs.api.ai/docs/response-design-for-actions-on-google) for other types of responses.
 
 # Tools for Development
 
 We of course need to develop and test the webhook before being deployed to the host. Below are the utilities I used. 
 
-* [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) - Use it to send some test payloads to the webhook. So I don't need to "talk" using api.ai during initial tests.
+* [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) - Use it to send some test payloads to the webhook.
 
 * [ngrok](https://ngrok.com/) - Creates a public https tunnel mapped to a port on my machine. It gives me a url that I can use as a webhook for my agent. Use this to actually integrate your agent to the webhook.
 
 * [heroku-cli](https://devcenter.heroku.com/articles/heroku-cli) - Well, only if you'll be deploying to heroku.
 
-"# liveagent-bot" 
