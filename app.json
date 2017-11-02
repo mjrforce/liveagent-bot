@@ -21,7 +21,7 @@
     },
 	"APIAI_REQUIRE_AUTH": {
       "description": "Boolean to determine if API.AI calls require Authentication",
-	  "value": true
+	  "value": "true"
     },
 	"FB_AUTH_TOKEN": {
       "description": "Token used when registering endpoint with Facebook. Value can be anything",
