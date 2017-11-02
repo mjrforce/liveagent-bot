@@ -15,8 +15,11 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 2. Click on the gear icon, the Export and Import tab, and the RESTORE FROM ZIP button. Upload [this zip file](bots/dialogflow/liveagent-bot.zip).
 
-3. Go to Fulfillment tab and update the endpoint URL to the Heroku URL (after you set up heroku, obviously). 
+3. Go to Fulfillment tab and update the endpoint URL to the Heroku URL (after you set up heroku, obviously). It will be something like below. `/webhook` is added because that is the route defined in `index.js` for the dialogflow router.
 
+```javascript
+https://myapp.herokuapp.com/webhook
+```
 # Set up Amazon Alexa
 
 1. Log in to the [Amazon Developer Console](https://developer.amazon.com/edw/home.html#/) and click on Alexa Skills Kit. Then click on Add a new skill.
@@ -30,7 +33,11 @@ This is one webhook to rule them all. This project uses the following platforms:
 ![Amazon Step 2b](bots/alexa/steps/step2b.JPG)
 ![Amazon Step 2c](bots/alexa/steps/step2c.JPG)
 
-4. Fill in a dummy endpoint. You'll need to come back here and fill in with the heroku endpoint.
+4. Fill in a dummy endpoint. You'll need to come back here and fill in with the heroku endpoint. Again, it will be something like below. This time, `/alexa` is added because that is the route defined in `index.js` for the alexa router. Since both a `/sms` route and `/voice` route are defined in our alexa router, the path looks like `/alexa/sms` to handle inbound text messages from Twilio. 
+
+```javascript
+https://myapp.herokuapp.com/alexa/sms
+```
 
 # Set up Heroku
 
