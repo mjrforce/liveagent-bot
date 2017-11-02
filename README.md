@@ -28,9 +28,9 @@ This is one webhook to rule them all. This project uses the following platforms:
 ![Amazon Step 1](bots/alexa/steps/Step1.JPG)
 
 3. Fill out the [Schema](bots/alexa/intentSchema.json) and [Utterances](bots/alexa/utterances.txt)
-![Amazon Step 2](bots/alexa/steps/step2a.JPG)
-![Amazon Step 2b](bots/alexa/steps/step2b.JPG)
-![Amazon Step 2c](bots/alexa/steps/step2c.JPG)
+![Amazon Step 2](images/step2a.JPG)
+![Amazon Step 2b](images/step2b.JPG)
+![Amazon Step 2c](images/step2c.JPG)
 
 4. Fill in a dummy endpoint. You'll need to come back here and fill in with the heroku endpoint. Again, it will be something like `https://myapp.herokuapp.com/alexa/sms`. This time, `/alexa` is added because that is the route defined in `index.js` for the alexa router. Since both a `/sms` route and `/voice` route are defined in our alexa router, the path looks like `/alexa/sms` to handle inbound text messages from Twilio. 
 
@@ -49,6 +49,7 @@ This is one webhook to rule them all. This project uses the following platforms:
 
 # Set up Facebook
 
+![Facebook](images/FB.PNG)
 # The Code
 
 Let's check out the code.
